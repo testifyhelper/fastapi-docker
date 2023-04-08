@@ -33,7 +33,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: testify876/fastapi:${{ github.sha }}
-        target: /home/ubuntu
+        target: /home/ubuntu/docker-image.tar
 
     - name: Deploy Docker Container on EC2 Instance
       uses: appleboy/ssh-action@master
@@ -42,7 +42,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          docker load -i /home/ec2-user/docker-image.tar
+          docker load -i /home/ubuntu/docker-image.tar
           docker stop fastapi-practice || true
           docker rm fastapi-practice || true
           docker run -d -p 80:80 --name fastapi-practice testify876/fastapi:${{ github.sha }}
