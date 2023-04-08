@@ -45,4 +45,4 @@ jobs:
           docker load -i /home/ec2-user/docker-image.tar
           docker stop fastapi-practice || true
           docker rm fastapi-practice || true
-          docker run -d -p 80:80 --name fastapi-practice testify/fastapi:${{ github.sha }}
+          docker run -d -p 80:80 --name fastapi-practice testify876/fastapi:${{ github.sha }}
