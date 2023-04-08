@@ -33,7 +33,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: testify876/fastapi:${{ github.sha }}
-        target: /home/ec2-user/docker-image.tar
+        target: /home/ubuntu
 
     - name: Deploy Docker Container on EC2 Instance
       uses: appleboy/ssh-action@master
